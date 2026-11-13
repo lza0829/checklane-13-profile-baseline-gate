@@ -6,6 +6,7 @@ import Inspect from './pages/Inspect.vue'
 import Batches from './pages/Batches.vue'
 import Quarantine from './pages/Quarantine.vue'
 import Curated from './pages/Curated.vue'
+import Profile from './pages/Profile.vue'
 
 export default createRouter({
   history: createWebHistory(),
@@ -13,6 +14,7 @@ export default createRouter({
     { path: '/', component: Dashboard },
     { path: '/datasets', component: Datasets },
     { path: '/rules', component: Rules },
+    { path: '/profile', component: Profile },
     { path: '/inspect', component: Inspect },
     { path: '/batches', component: Batches },
     { path: '/quarantine', component: Quarantine },

@@ -52,3 +52,9 @@ def count_all(conn: sqlite3.Connection, dataset_id: int | None = None) -> int:
     return int(
         conn.execute("SELECT COUNT(*) AS c FROM curated WHERE dataset_id=?", (dataset_id,)).fetchone()["c"]
     )
+
+
+def count_by_batch(conn: sqlite3.Connection, batch_id: int) -> int:
+    return int(
+        conn.execute("SELECT COUNT(*) AS c FROM curated WHERE batch_id=?", (batch_id,)).fetchone()["c"]
+    )

@@ -1,0 +1,8 @@
+{"entity_key":"ORD-D1","sku":"SKU-A","price":11.0,"qty":1,"title":"漂移批-正常1"}
+{"entity_key":"ORD-D2","sku":"","price":10.0,"qty":2,"title":"漂移批-缺sku"}
+{"entity_key":"ORD-D3","sku":null,"price":9.5,"qty":1,"title":"漂移批-sku为null"}
+{"entity_key":"ORD-D4","sku":"SKU-B","price":"NaN","qty":1,"title":"漂移批-价格非数字"}
+{"entity_key":"ORD-D5","sku":"","price":8.0,"qty":3,"title":"漂移批-缺sku2"}
+{"entity_key":"ORD-D6","sku":"SKU-C","price":7.5,"qty":2,"title":"漂移批-正常2"}
+{"entity_key":"ORD-D7","sku":"","price":6.5,"qty":1,"title":"漂移批-缺sku3"}
+{"entity_key":"ORD-D8","sku":"SKU-D","price":"abc","qty":1,"title":"漂移批-价格坏"}

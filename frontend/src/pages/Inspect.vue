@@ -38,13 +38,43 @@ async function run() {
     </div>
     <p v-if="err" class="tag danger">{{ err }}</p>
     <div class="panel" v-if="last">
-      <h3>批次 #{{ last.id }} <span class="tag" :class="last.status === 'released' ? 'ok' : ''">{{ last.status }}</span></h3>
+      <h3>批次 #{{ last.id }} <span class="tag" :class="last.status === 'released' ? 'ok' : (last.status === 'profile_blocked' ? 'danger' : '')">{{ last.status }}</span></h3>
       <div class="tiles">
         <div class="tile"><div class="hero-num">{{ last.scanned_count }}</div><div class="muted">扫描</div></div>
         <div class="tile"><div class="hero-num">{{ last.passed_count }}</div><div class="muted">通过</div></div>
         <div class="tile"><div class="hero-num">{{ last.quarantined_count }}</div><div class="muted">隔离</div></div>
         <div class="tile"><div class="hero-num">{{ last.released_count }}</div><div class="muted">签发</div></div>
       </div>
+      <template v-if="last.report.profile_gate">
+        <h4>画像基线门禁
+          <span class="tag" :class="last.report.profile_gate.blocked ? 'danger' : 'ok'">
+            {{ last.report.profile_gate.blocked ? '超阈 · 整批阻断' : '未超阈' }}
+          </span>
+        </h4>
+        <p v-if="last.report.profile_gate.blocked" class="tag danger">
+          整批不得新写入精选：{{ last.report.profile_gate.block_reasons.join('；') }}
+        </p>
+        <p class="muted">
+          策略 {{ last.report.profile_gate.policy === 'rolling' ? '滚动更新' : '冻结基线' }} ·
+          监控 {{ last.report.profile_gate.monitored_count }} 项 ·
+          {{ last.report.profile_gate.baseline_update.reason }}
+        </p>
+        <table v-if="last.report.profile_gate.fields && last.report.profile_gate.fields.length">
+          <thead><tr><th>字段</th><th>指标</th><th>本批值</th><th>基线值</th><th>绝对差</th><th>阈值(口径)</th><th>判定</th></tr></thead>
+          <tbody>
+            <tr v-for="f in last.report.profile_gate.fields" :key="f.field + f.metric">
+              <td><code>{{ f.field }}</code></td>
+              <td>{{ f.metric }}</td>
+              <td>{{ f.batch_value ?? '—' }}</td>
+              <td>{{ f.baseline_value }}</td>
+              <td>{{ f.diff_abs ?? '—' }}</td>
+              <td>{{ f.threshold }} ({{ f.threshold_mode }})</td>
+              <td><span class="tag" :class="f.breached ? 'danger' : 'ok'">{{ f.breached ? '超阈' : '正常' }}</span>
+                <span class="muted"> {{ f.note }}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </template>
       <h4>对账</h4>
       <table>
         <thead><tr><th>校验</th><th>结果</th><th>说明</th></tr></thead>

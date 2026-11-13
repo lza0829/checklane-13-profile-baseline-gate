@@ -66,6 +66,12 @@ button, .btn {
   cursor: pointer;
 }
 button:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-danger { background: var(--danger); }
+input[type="number"], input[type="text"] {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
 table { width: 100%; border-collapse: collapse; font-size: 14px; }
 th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
 select { padding: 6px 8px; border-radius: 6px; border: 1px solid var(--line); }

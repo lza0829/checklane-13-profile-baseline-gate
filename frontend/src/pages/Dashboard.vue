@@ -21,6 +21,7 @@ onMounted(async () => {
       <div class="tile"><div class="hero-num">{{ stats.batch_count }}</div><div class="muted">入检批次</div></div>
       <div class="tile"><div class="hero-num">{{ stats.curated_count }}</div><div class="muted">精选行</div></div>
       <div class="tile"><div class="hero-num">{{ stats.quarantine_count }}</div><div class="muted">隔离行</div></div>
+      <div class="tile"><div class="hero-num">{{ stats.profile_blocked_count }}</div><div class="muted">画像阻断批次</div></div>
     </div>
     <router-link class="btn" to="/inspect">去入检台</router-link>
   </div>

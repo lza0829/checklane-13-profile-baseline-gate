@@ -9,6 +9,7 @@
         <router-link to="/">总览</router-link>
         <router-link to="/datasets">数据集</router-link>
         <router-link to="/rules">规则</router-link>
+        <router-link to="/profile">画像门禁</router-link>
         <router-link to="/inspect">入检台</router-link>
         <router-link to="/batches">批次</router-link>
         <router-link to="/quarantine">隔离区</router-link>
